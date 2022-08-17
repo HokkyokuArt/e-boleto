@@ -1,7 +1,152 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<databaseChangeLog  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
-                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
-                    https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
+<?xml version="1.0" encoding="UTF-8" ?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
 
+    <changeSet id="1" author="HJV">
+        <preConditions onFail="MARK_RAN" onFailMessage="Já existe a tabela FORNECEDOR">
+            <not>
+                <tableExists tableName="FORNECEDOR"/>
+            </not>
+        </preConditions>
+        <createTable tableName="FORNECEDOR">
+            <column name="id" type="int">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_FORNECEDOR"/>
+            </column>
+            <column name="razaoSocial" type="VARCHAR(60)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cnpj" type="VARCHAR(18)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ie" type="VARCHAR(14)"/>
+            <column name="nomeFantasia" type="VARCHAR(60)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="logradouro" type="VARCHAR(60)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="numero" type="VARCHAR(20))">
+                <constraints nullable="false"/>
+            </column>
+            <column name="bairro" type="VARCHAR(60)"/>
+            <column name="complemento" type="VARCHAR(60)"/>
+            <column name="cep" type="VARCHAR(10))">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cidade" type="VARCHAR(60))">
+                <constraints nullable="false"/>
+            </column>
+            <column name="estado" type="VARCHAR(30))">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="VARCHAR(60))">
+                <constraints nullable="false"/>
+            </column>
+            <column name="telefone" type="VARCHAR(30)"/>
+            <column name="prazoPagamento" type="VARCHAR(150))">
+                <constraints nullable="false"/>
+            </column>
+
+        </createTable>
+
+        <addAutoIncrement tableName="FORNECEDOR"
+                          columnName="id"
+                          columnDataType="int"
+                          incrementBy="1"
+                          startWith="1"/>
+    </changeSet>
+
+
+    <changeSet id="2" author="HJV">
+        <preConditions onFail="MARK_RAN" onFailMessage="Já existe a tabela CLIENTE">
+            <not>
+                <tableExists tableName="CLIENTE"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="CLIENTE">
+            <column name="id" type="int">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_CLIENTE"/>
+            </column>
+            <column name="cnpj/cpf" type="VARCHAR(18)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ie/rg" type="VARCHAR(14)"/>
+            <column name="razaoSocial/nome" type="VARCHAR(60)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="logradouro" type="VARCHAR(60)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="numero" type="VARCHAR(60)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="bairro" type="VARCHAR(60)"/>
+            <column name="complemento" type="VARCHAR(60)"/>
+            <column name="cep" type="VARCHAR(10))">
+                <constraints nullable="false"/>
+            </column>
+            <column name="cidade" type="VARCHAR(60))">
+                <constraints nullable="false"/>
+            </column>
+            <column name="estado" type="VARCHAR(30))">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="VARCHAR(60))">
+                <constraints nullable="false"/>
+            </column>
+            <column name="telefone" type="VARCHAR(30)"/>
+            <column name="contato" type="VARCHAR(60)"/>
+
+        </createTable>
+        <addAutoIncrement tableName="CLIENTE"
+                          columnName="id"
+                          columnDataType="int"
+                          incrementBy="1"
+                          startWith="1"/>
+    </changeSet>
+
+
+    <changeSet id="3" author="HJV">
+        <preConditions onFail="MARK_RAN" onFailMessage="Já existe a tabela BOLETO">
+            <not>
+                <tableExists tableName="BOLETO"/>
+            </not>
+        </preConditions>
+        <createTable tableName="BOLETO">
+            <column name="id" type="int">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_BOLETO"/>
+            </column>
+            <column name="fornecedor_id" type="int">
+                <constraints nullable="false"  foreignKeyName="FK_BOLETO_FORNECEDOR"
+                             referencedTableName="fornecedor"
+                             referencedColumnNames="id"/>
+            </column>
+            <column name="cliente_id" type="int">
+                <constraints nullable="false"  foreignKeyName="FK_BOLETO_CLIENTE"
+                             referencedTableName="cliente"
+                             referencedColumnNames="id"/>
+            </column>
+            <column name="dataEmissao" type="date"/>
+            <column name="dataVencimento" type="date"/>
+		    <column name="novoVencimento" type="date"/>
+		    <column name="dataPagamento" type="date"/>
+		    <column name="valor" type="FLOAT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="situacao" type="VARCHAR(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="alterado" type="VARCHAR(3)"/>
+            <column name="obs" type="VARCHAR(100)"/>
+
+        </createTable>
+        <addAutoIncrement tableName="BOLETO"
+                      columnName="id"
+                      columnDataType="int"
+                      incrementBy="1"
+                      startWith="1"/>
+    </changeSet>
 </databaseChangeLog>
