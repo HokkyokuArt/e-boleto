@@ -7,12 +7,12 @@
     <changeSet id="1" author="HJV">
         <preConditions onFail="MARK_RAN" onFailMessage="Já existe a tabela FORNECEDOR">
             <not>
-                <tableExists tableName="FORNECEDOR"/>
+                <tableExists tableName="fornecedor"/>
             </not>
         </preConditions>
-        <createTable tableName="FORNECEDOR">
+        <createTable tableName="fornecedor">
             <column name="id" type="int">
-                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_FORNECEDOR"/>
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_fornecedor"/>
             </column>
             <column name="razaoSocial" type="VARCHAR(60)">
                 <constraints nullable="false"/>
@@ -51,7 +51,7 @@
 
         </createTable>
 
-        <addAutoIncrement tableName="FORNECEDOR"
+        <addAutoIncrement tableName="fornecedor"
                           columnName="id"
                           columnDataType="int"
                           incrementBy="1"
@@ -62,19 +62,19 @@
     <changeSet id="2" author="HJV">
         <preConditions onFail="MARK_RAN" onFailMessage="Já existe a tabela CLIENTE">
             <not>
-                <tableExists tableName="CLIENTE"/>
+                <tableExists tableName="cliente"/>
             </not>
         </preConditions>
 
-        <createTable tableName="CLIENTE">
+        <createTable tableName="cliente">
             <column name="id" type="int">
-                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_CLIENTE"/>
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_cliente"/>
             </column>
-            <column name="cnpj/cpf" type="VARCHAR(18)">
+            <column name="cnpjCpf" type="VARCHAR(18)">
                 <constraints nullable="false"/>
             </column>
-            <column name="ie/rg" type="VARCHAR(14)"/>
-            <column name="razaoSocial/nome" type="VARCHAR(60)">
+            <column name="ieRg" type="VARCHAR(14)"/>
+            <column name="razaoSocialNome" type="VARCHAR(60)">
                 <constraints nullable="false"/>
             </column>
             <column name="logradouro" type="VARCHAR(60)">
@@ -101,7 +101,7 @@
             <column name="contato" type="VARCHAR(60)"/>
 
         </createTable>
-        <addAutoIncrement tableName="CLIENTE"
+        <addAutoIncrement tableName="cliente"
                           columnName="id"
                           columnDataType="int"
                           incrementBy="1"
@@ -112,20 +112,20 @@
     <changeSet id="3" author="HJV">
         <preConditions onFail="MARK_RAN" onFailMessage="Já existe a tabela BOLETO">
             <not>
-                <tableExists tableName="BOLETO"/>
+                <tableExists tableName="boleto"/>
             </not>
         </preConditions>
-        <createTable tableName="BOLETO">
+        <createTable tableName="boleto">
             <column name="id" type="int">
-                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_BOLETO"/>
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_boleto"/>
             </column>
             <column name="fornecedor_id" type="int">
-                <constraints nullable="false"  foreignKeyName="FK_BOLETO_FORNECEDOR"
+                <constraints nullable="false"  foreignKeyName="fk_boleto_fornecedor"
                              referencedTableName="fornecedor"
                              referencedColumnNames="id"/>
             </column>
             <column name="cliente_id" type="int">
-                <constraints nullable="false"  foreignKeyName="FK_BOLETO_CLIENTE"
+                <constraints nullable="false"  foreignKeyName="fk_boleto_cliente"
                              referencedTableName="cliente"
                              referencedColumnNames="id"/>
             </column>
@@ -133,7 +133,7 @@
             <column name="dataVencimento" type="date"/>
 		    <column name="novoVencimento" type="date"/>
 		    <column name="dataPagamento" type="date"/>
-		    <column name="valor" type="FLOAT">
+		    <column name="valor" type="float">
                 <constraints nullable="false"/>
             </column>
             <column name="situacao" type="VARCHAR(20)">
@@ -143,7 +143,7 @@
             <column name="obs" type="VARCHAR(100)"/>
 
         </createTable>
-        <addAutoIncrement tableName="BOLETO"
+        <addAutoIncrement tableName="boleto"
                       columnName="id"
                       columnDataType="int"
                       incrementBy="1"
