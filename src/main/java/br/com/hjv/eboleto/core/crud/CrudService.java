@@ -1,4 +1,4 @@
-package br.com.hjv.eboleto.crud;
+package br.com.hjv.eboleto.core.crud;
 
 
 import org.springframework.beans.factory.annotation.Autowired;

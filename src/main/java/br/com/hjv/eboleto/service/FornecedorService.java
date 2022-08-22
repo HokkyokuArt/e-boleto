@@ -1,11 +1,8 @@
 package br.com.hjv.eboleto.service;
 
-import br.com.hjv.eboleto.crud.CrudService;
-import br.com.hjv.eboleto.domain.Cliente;
+import br.com.hjv.eboleto.core.crud.CrudService;
 import br.com.hjv.eboleto.domain.Fornecedor;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class FornecedorService extends CrudService<Fornecedor,Long> {

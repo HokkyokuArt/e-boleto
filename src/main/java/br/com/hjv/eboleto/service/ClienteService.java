@@ -1,10 +1,8 @@
 package br.com.hjv.eboleto.service;
 
-import br.com.hjv.eboleto.crud.CrudService;
+import br.com.hjv.eboleto.core.crud.CrudService;
 import br.com.hjv.eboleto.domain.Cliente;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class ClienteService extends CrudService <Cliente, Long>{
