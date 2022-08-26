@@ -1,6 +1,6 @@
 package br.com.hjv.eboleto.service;
 
-import br.com.hjv.eboleto.core.crud.CrudService;
+import br.com.hjv.eboleto.core.CrudService;
 import br.com.hjv.eboleto.domain.Fornecedor;
 import org.springframework.stereotype.Service;
 
@@ -9,7 +9,7 @@ public class FornecedorService extends CrudService<Fornecedor,Long> {
 
     @Override
     protected Fornecedor editarEntidade(Fornecedor recuperado, Fornecedor entidade) {
-        recuperado.setRazaoSocial(entidade.getRazaoSocial());
+        recuperado.setRazaosocial(entidade.getRazaosocial());
         recuperado.setCnpj(entidade.getCnpj());
         recuperado.setIe(entidade.getIe());
         recuperado.setLogradouro(entidade.getLogradouro());
@@ -21,10 +21,9 @@ public class FornecedorService extends CrudService<Fornecedor,Long> {
         recuperado.setEstado(entidade.getEstado());
         recuperado.setEmail(entidade.getEmail());
         recuperado.setTelefone(entidade.getTelefone());
-        recuperado.setPrazoPagamento(entidade.getPrazoPagamento());
+        recuperado.setPrazopagamento(entidade.getPrazopagamento());
         recuperado.setSenha(entidade.getSenha());
 
         return recuperado;
     }
- }
-
+}

@@ -1,28 +1,28 @@
 package br.com.hjv.eboleto.domain;
 
+import br.com.hjv.eboleto.core.CrudDomain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-
-public class Fornecedor {
+public class Fornecedor implements CrudDomain<Long>, Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String razaoSocial;
+    @Column(name="razao_social")
+    private String razaosocial;
     private String cnpj;
     private String ie;
-    private String nomeFantasia;
+    @Column(name="nome_fantasia")
+    private String nomefantasia;
     private String logradouro;
     private String numero;
     private String bairro;
@@ -32,6 +32,9 @@ public class Fornecedor {
     private String estado;
     private String email;
     private String telefone;
-    private String prazoPagamento;
+    @Column(name="prazo_pagamento")
+    private Long prazopagamento;
     private String senha;
+
+
 }

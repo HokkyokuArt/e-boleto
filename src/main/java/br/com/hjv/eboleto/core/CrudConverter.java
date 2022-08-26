@@ -1,4 +1,4 @@
-package br.com.hjv.eboleto.core.crud;
+package br.com.hjv.eboleto.core;
 
 public interface CrudConverter<T, D> {
 

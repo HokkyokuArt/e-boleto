@@ -5,16 +5,16 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.7.2</version>
+		<version>2.6.11</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>br.com.hjv</groupId>
 	<artifactId>eboleto</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>eboleto</name>
-	<description>e-boleto</description>
+	<description>API de reimpressão de boletos</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>18</java.version>
 	</properties>
 	<dependencies>
 		<dependency>

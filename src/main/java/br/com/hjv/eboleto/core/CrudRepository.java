@@ -1,4 +1,4 @@
-package br.com.hjv.eboleto.core.crud;
+package br.com.hjv.eboleto.core;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.NoRepositoryBean;

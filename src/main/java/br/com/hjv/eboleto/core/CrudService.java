@@ -1,17 +1,22 @@
-package br.com.hjv.eboleto.core.crud;
-
+package br.com.hjv.eboleto.core;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 import java.util.Objects;
 
-public abstract class CrudService <T,ID>{
+public abstract class CrudService<T,ID> {
 
     @Autowired
     protected CrudRepository<T,ID> repository;
 
-    public List<T> listar(){
+    public Page<T>paginada(Pageable pageable){
+        return repository.findAll(pageable);
+    }
+
+    public List<T>listar(){
         return repository.findAll();
     }
 
@@ -28,16 +33,14 @@ public abstract class CrudService <T,ID>{
     }
 
     public T editar(ID id, T entidade){
-        var recuperado = porId(id);
+        var recuperado= porId(id);
 
         if(Objects.isNull(recuperado)){
-            throw new RuntimeException(("não foi encontrado"));
+            throw new RuntimeException("não foi encontrado");
         }
-
-        var entidadeSalvar = editarEntidade(recuperado, entidade);
-
+        var entidadeSalvar= editarEntidade(recuperado, entidade);
         return repository.save(entidadeSalvar);
-    }
 
+    }
     protected abstract T editarEntidade(T recuperado, T entidade);
 }

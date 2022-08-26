@@ -4,7 +4,7 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
 
-     <changeSet id="1" author="HJV">
+    <changeSet id="1" author="HJV">
         <preConditions onFail="MARK_RAN" onFailMessage="Já existe a tabela BOLETO">
             <not>
                 <tableExists tableName="boleto"/>
@@ -15,26 +15,30 @@
                 <constraints nullable="false" primaryKey="true" primaryKeyName="pk_boleto"/>
             </column>
             <column name="fornecedor_id" type="int">
-                <constraints nullable="false"  foreignKeyName="fk_boleto_fornecedor"
+                <constraints nullable="false"
+                             foreignKeyName="fk_boleto_fornecedor"
                              referencedTableName="fornecedor"
                              referencedColumnNames="id"/>
             </column>
             <column name="cliente_id" type="int">
-                <constraints nullable="false"  foreignKeyName="fk_boleto_cliente"
+                <constraints nullable="false"
+                             foreignKeyName="fk_boleto_cliente"
                              referencedTableName="cliente"
                              referencedColumnNames="id"/>
             </column>
-            <column name="dataEmissao" type="date"/>
-            <column name="dataVencimento" type="date"/>
-            <column name="novoVencimento" type="date"/>
-            <column name="dataPagamento" type="date"/>
+            <column name="data_emissao" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="data_vencimento" type="date">
+                <constraints nullable="false"/>
+            </column>
+            <column name="novo_vencimento" type="date"/>
+            <column name="data_pagamento" type="date"/>
             <column name="valor" type="FLOAT">
                 <constraints nullable="false"/>
             </column>
-            <column name="situacao" type="VARCHAR(20)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="alterado" type="VARCHAR(3)"/>
+            <column name="situacao" type="VARCHAR(20)" defaultValue="aberto"/>
+            <column name="alterado" type="boolean" defaultValue="false"/>
             <column name="obs" type="VARCHAR(100)"/>
 
         </createTable>
