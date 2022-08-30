@@ -7,39 +7,40 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
-public abstract class CrudController <T extends CrudDomain<ID>,D,ID>{
+public abstract class CrudController<T extends CrudDomain<ID>, D, ID> {
     @Autowired
-    protected CrudService<T,ID> service;
+    protected CrudService<T, ID> service;
 
     @Autowired
-    protected CrudConverter<T,D> converter;
+    protected CrudConverter<T, D> converter;
+
+    @Autowired
+    protected CrudRepository<T, ID> repository;
 
     @GetMapping
-    public ResponseEntity<Page<D>>paginada(Pageable pageable){
-        var listaPaginada= service.paginada(pageable).map(converter::entidadeParaDto);
+    public ResponseEntity<Page<D>> paginada(Pageable pageable) {
+        var listaPaginada = service.paginada(pageable).map(converter::entidadeParaDto);
         return ResponseEntity.ok(listaPaginada);
     }
 
-    //@GetMapping
-  //  public ResponseEntity<List<D>> listar(){
+    // @GetMapping
+    // public ResponseEntity<List<D>> listar() {
 
-      //  var listaDto= service.listar().stream().map(converter::entidadeParaDto)
-       //         .collect(Collectors.toList());
+    //     var listaDto = service.listar().stream().map(converter::entidadeParaDto)
+    //             .collect(Collectors.toList());
 
-      //  return ResponseEntity.ok(listaDto);
+    //     return ResponseEntity.ok(listaDto);
 
-   // }
+    // }
+
     @GetMapping("/{id}")
-    public ResponseEntity<D>especifico(@PathVariable("id") ID id){
+    public ResponseEntity<D> especifico(@PathVariable("id") ID id) {
 
-        var entidade= service.porId(id);
+        var entidade = service.porId(id);
 
-        if (Objects.isNull(entidade)){
+        if (Objects.isNull(entidade)) {
             return ResponseEntity.notFound().build();
         }
 
@@ -48,31 +49,29 @@ public abstract class CrudController <T extends CrudDomain<ID>,D,ID>{
     }
 
     @PostMapping
-    public ResponseEntity<D>criar (@RequestBody D dto){
+    public ResponseEntity<D> criar(@RequestBody D dto) {
 
         var entidade = converter.dtoParaEntidade(dto);
         var salvo = service.criar(entidade);
 
-        ServletUriComponentsBuilder builder= ServletUriComponentsBuilder.fromCurrentRequest();
-        var uri= builder.path("/{id}").buildAndExpand(salvo.getId()).toUri();
+        ServletUriComponentsBuilder builder = ServletUriComponentsBuilder.fromCurrentRequest();
+        var uri = builder.path("/{id}").buildAndExpand(salvo.getId()).toUri();
 
         return ResponseEntity.created(uri).body(converter.entidadeParaDto(salvo));
     }
 
     @PutMapping
-    public ResponseEntity<D> editar(@PathVariable("id")ID id, @RequestBody D dto){
+    public ResponseEntity<D> editar(@PathVariable("id") ID id, @RequestBody D dto) {
 
-        var novaEntidade= converter.dtoParaEntidade(dto);
-        var salvo=service.editar(id,novaEntidade);
+        var novaEntidade = converter.dtoParaEntidade(dto);
+        var salvo = service.editar(id, novaEntidade);
 
         return ResponseEntity.ok(converter.entidadeParaDto(salvo));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> excluir(@PathVariable("id")ID id){
+    public ResponseEntity<Void> excluir(@PathVariable("id") ID id) {
         service.excluir(id);
         return ResponseEntity.noContent().build();
     }
-
-
 }

@@ -4,8 +4,6 @@ import br.com.hjv.eboleto.core.CrudService;
 import br.com.hjv.eboleto.domain.Cliente;
 import org.springframework.stereotype.Service;
 
-import java.util.Objects;
-
 @Service
 public class ClienteService extends CrudService<Cliente,Long> {
 
@@ -27,5 +25,5 @@ public class ClienteService extends CrudService<Cliente,Long> {
         recuperado.setSenha(entidade.getSenha());
 
         return recuperado;
-    }
+    }    
 }

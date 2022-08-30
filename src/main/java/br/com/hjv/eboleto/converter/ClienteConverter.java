@@ -16,18 +16,18 @@ public class ClienteConverter implements CrudConverter<Cliente, ClienteDTO> {
         dto.setId(entidade.getId());
         dto.setRazaosocialnome(entidade.getRazaosocialnome());
         dto.setCnpjcpf(entidade.getCnpjcpf());
-        dto.setIerg(entidade.getIerg());
-        dto.setLogradouro(entidade.getLogradouro());
-        dto.setNumero(entidade.getNumero());
-        dto.setBairro(entidade.getBairro());
-        dto.setComplemento(entidade.getComplemento());
-        dto.setCep(entidade.getCep());
-        dto.setCidade(entidade.getCidade());
-        dto.setEstado(entidade.getEstado());
-        dto.setEmail(entidade.getEmail());
-        dto.setTelefone(entidade.getTelefone());
-        dto.setContato(entidade.getContato());
-        dto.setSenha(entidade.getSenha());
+        // dto.setIerg(entidade.getIerg());
+        // dto.setLogradouro(entidade.getLogradouro());
+        // dto.setNumero(entidade.getNumero());
+        // dto.setBairro(entidade.getBairro());
+        // dto.setComplemento(entidade.getComplemento());
+        // dto.setCep(entidade.getCep());
+        // dto.setCidade(entidade.getCidade());
+        // dto.setEstado(entidade.getEstado());
+        // dto.setEmail(entidade.getEmail());
+        // dto.setTelefone(entidade.getTelefone());
+        // dto.setContato(entidade.getContato());
+        // dto.setSenha(entidade.getSenha());
 
         return  dto;
     }
@@ -40,18 +40,18 @@ public class ClienteConverter implements CrudConverter<Cliente, ClienteDTO> {
         cliente.setId(dto.getId());
         cliente.setRazaosocialnome(dto.getRazaosocialnome());
         cliente.setCnpjcpf(dto.getCnpjcpf());
-        cliente.setIerg(dto.getIerg());
-        cliente.setLogradouro(dto.getLogradouro());
-        cliente.setNumero(dto.getNumero());
-        cliente.setBairro(dto.getBairro());
-        cliente.setComplemento(dto.getComplemento());
-        cliente.setCep(dto.getCep());
-        cliente.setCidade(dto.getCidade());
-        cliente.setEstado(dto.getEstado());
-        cliente.setEmail(dto.getEmail());
-        cliente.setTelefone(dto.getTelefone());
-        cliente.setContato(dto.getContato());
-        cliente.setSenha(dto.getSenha());
+        // cliente.setIerg(dto.getIerg());
+        // cliente.setLogradouro(dto.getLogradouro());
+        // cliente.setNumero(dto.getNumero());
+        // cliente.setBairro(dto.getBairro());
+        // cliente.setComplemento(dto.getComplemento());
+        // cliente.setCep(dto.getCep());
+        // cliente.setCidade(dto.getCidade());
+        // cliente.setEstado(dto.getEstado());
+        // cliente.setEmail(dto.getEmail());
+        // cliente.setTelefone(dto.getTelefone());
+        // cliente.setContato(dto.getContato());
+        // cliente.setSenha(dto.getSenha());
 
         return cliente;
 
