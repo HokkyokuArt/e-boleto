@@ -9,6 +9,11 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface BoletoRepository  extends CrudRepository<Boleto,Long> {
-    @Query(value = "select b from Boleto b where b.cliente = :cliente_id ")
+    String select = "select b from Boleto b where b.cliente = :cliente_id ";
+
+    @Query(value = select + "and b.situacao = 'aberto'")
+    List<Boleto> constultaBoletosAbertosPorCliente(@Param("cliente_id") Cliente id);
+
+    @Query(value = select)
     List<Boleto> constultaBoletosPorCliente(@Param("cliente_id") Cliente id);
 }

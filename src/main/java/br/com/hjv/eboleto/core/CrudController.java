@@ -37,35 +37,26 @@ public abstract class CrudController<T extends CrudDomain<ID>, D, ID> {
 
     @GetMapping("/{id}")
     public ResponseEntity<D> especifico(@PathVariable("id") ID id) {
-
         var entidade = service.porId(id);
-
         if (Objects.isNull(entidade)) {
             return ResponseEntity.notFound().build();
         }
-
         return ResponseEntity.ok(converter.entidadeParaDto(entidade));
-
     }
 
     @PostMapping
     public ResponseEntity<D> criar(@RequestBody D dto) {
-
         var entidade = converter.dtoParaEntidade(dto);
         var salvo = service.criar(entidade);
-
         ServletUriComponentsBuilder builder = ServletUriComponentsBuilder.fromCurrentRequest();
         var uri = builder.path("/{id}").buildAndExpand(salvo.getId()).toUri();
-
         return ResponseEntity.created(uri).body(converter.entidadeParaDto(salvo));
     }
 
     @PutMapping
     public ResponseEntity<D> editar(@PathVariable("id") ID id, @RequestBody D dto) {
-
         var novaEntidade = converter.dtoParaEntidade(dto);
         var salvo = service.editar(id, novaEntidade);
-
         return ResponseEntity.ok(converter.entidadeParaDto(salvo));
     }
 

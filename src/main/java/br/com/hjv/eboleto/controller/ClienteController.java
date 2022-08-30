@@ -4,8 +4,9 @@ import br.com.hjv.eboleto.domain.Cliente;
 import br.com.hjv.eboleto.dto.BoletoResumoDTO;
 import br.com.hjv.eboleto.dto.ClienteDTO;
 import br.com.hjv.eboleto.repository.BoletoRepository;
+import br.com.hjv.eboleto.service.BoletoService;
+
 import java.util.List;
-import java.util.stream.Collectors;
 import javax.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,22 +17,25 @@ import org.springframework.web.bind.annotation.*;
 public class ClienteController extends CrudController<Cliente, ClienteDTO, Long> {
     @Autowired
     protected BoletoRepository boletoRepository;
-
     public BoletoRepository getRepository() {
         return (BoletoRepository) this.boletoRepository;
     }
 
-    @GetMapping("/{id}/meus-boletos")
-    public ResponseEntity<List<BoletoResumoDTO>> consultarBoletosPorId(@PathParam("id") Cliente id) {
-        var boletos = this.getRepository().constultaBoletosPorCliente(id);
-        var boletoDto = boletos.stream().map(boleto -> new BoletoResumoDTO(
-                boleto.getDataemissao(),
-                boleto.getDatavencimento(),
-                boleto.getNovovencimento(),
-                boleto.getValor(),
-                boleto.getSituacao(),
-                boleto.getAlterado())).collect(Collectors.toList());
+    @Autowired
+    protected BoletoService boletoService;
+    public BoletoService getService() {
+        return (BoletoService) this.boletoService;
+    }
 
-        return ResponseEntity.ok(boletoDto);
+    @GetMapping("/{id}/meus-boletos")
+    public ResponseEntity<List<BoletoResumoDTO>> constultaBoletosPorCliente(@PathParam("id") Cliente id) {
+        var boletos = this.getRepository().constultaBoletosPorCliente(id);
+        return ResponseEntity.ok(this.getService().boletoResumoDto(boletos));
+    }
+
+    @GetMapping("/{id}/meus-boletos/abertos")
+    public ResponseEntity<List<BoletoResumoDTO>> constultaBoletosAbertosPorCliente(@PathParam("id") Cliente id) {
+        var boletos = this.getRepository().constultaBoletosAbertosPorCliente(id);
+        return ResponseEntity.ok(this.getService().boletoResumoDto(boletos));
     }
 }
