@@ -6,6 +6,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
 
 @Entity
@@ -34,6 +37,7 @@ public class Fornecedor implements CrudDomain<Long>, Serializable {
     private String telefone;
     @Column(name="prazo_pagamento")
     private Long prazopagamento;
+    @JsonIgnore
     private String senha;
 
 

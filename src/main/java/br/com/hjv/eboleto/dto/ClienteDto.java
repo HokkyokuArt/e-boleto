@@ -5,8 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -28,7 +26,4 @@ public class ClienteDTO implements Serializable {
     // private String telefone;
     // private String contato;
     // private String senha;
-    private List<BoletoDTO> boletos = new ArrayList<>();
-
-
 }
