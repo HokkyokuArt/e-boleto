@@ -27,14 +27,13 @@ public class FornecedorConverter implements CrudConverter<Fornecedor, Fornecedor
         dto.setEmail(entidade.getEmail());
         dto.setTelefone(entidade.getTelefone());
         dto.setPrazopagamento(entidade.getPrazopagamento());
-        dto.setEmail(entidade.getSenha());
+        // dto.setSenha(entidade.getSenha());
 
         return  dto;
     }
 
     @Override
     public Fornecedor dtoParaEntidade(FornecedorDTO dto){
-
         var fornecedor = new Fornecedor();
         fornecedor.setId(dto.getId());
         fornecedor.setRazaosocial(dto.getRazaosocial());
@@ -51,7 +50,7 @@ public class FornecedorConverter implements CrudConverter<Fornecedor, Fornecedor
         fornecedor.setEmail(dto.getEmail());
         fornecedor.setTelefone(dto.getTelefone());
         fornecedor.setPrazopagamento(dto.getPrazopagamento());
-        fornecedor.setSenha(dto.getSenha());
+        // fornecedor.setSenha(dto.getSenha());
 
         return fornecedor;
     }

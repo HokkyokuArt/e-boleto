@@ -16,9 +16,6 @@ public abstract class CrudController<T extends CrudDomain<ID>, D, ID> {
     @Autowired
     protected CrudConverter<T, D> converter;
 
-    @Autowired
-    protected CrudRepository<T, ID> repository;
-
     @GetMapping
     public ResponseEntity<Page<D>> paginada(Pageable pageable) {
         var listaPaginada = service.paginada(pageable).map(converter::entidadeParaDto);
@@ -45,15 +42,16 @@ public abstract class CrudController<T extends CrudDomain<ID>, D, ID> {
     }
 
     @PostMapping
-    public ResponseEntity<D> criar(@RequestBody D dto) {
-        var entidade = converter.dtoParaEntidade(dto);
-        var salvo = service.criar(entidade);
+    public ResponseEntity<D> criar(@RequestBody T dto) {
+        // var entidade = converter.dtoParaEntidade(dto);
+        // var salvo = service.criar(entidade);
+        var salvo = service.criar(dto);
         ServletUriComponentsBuilder builder = ServletUriComponentsBuilder.fromCurrentRequest();
         var uri = builder.path("/{id}").buildAndExpand(salvo.getId()).toUri();
         return ResponseEntity.created(uri).body(converter.entidadeParaDto(salvo));
     }
 
-    @PutMapping
+    @PutMapping("/{id}")
     public ResponseEntity<D> editar(@PathVariable("id") ID id, @RequestBody D dto) {
         var novaEntidade = converter.dtoParaEntidade(dto);
         var salvo = service.editar(id, novaEntidade);

@@ -6,6 +6,9 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 
+
+
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
@@ -26,6 +29,6 @@ public class FornecedorDTO implements Serializable {
     private String email;
     private String telefone;
     private Long prazopagamento;
-    private String senha;
+    // private String senha;
 
 }

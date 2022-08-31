@@ -12,6 +12,7 @@ public class FornecedorService extends CrudService<Fornecedor,Long> {
         recuperado.setRazaosocial(entidade.getRazaosocial());
         recuperado.setCnpj(entidade.getCnpj());
         recuperado.setIe(entidade.getIe());
+        recuperado.setNomefantasia(entidade.getNomefantasia());
         recuperado.setLogradouro(entidade.getLogradouro());
         recuperado.setNumero(entidade.getNumero());
         recuperado.setBairro(entidade.getBairro());
@@ -22,7 +23,7 @@ public class FornecedorService extends CrudService<Fornecedor,Long> {
         recuperado.setEmail(entidade.getEmail());
         recuperado.setTelefone(entidade.getTelefone());
         recuperado.setPrazopagamento(entidade.getPrazopagamento());
-        recuperado.setSenha(entidade.getSenha());
+        // recuperado.setSenha(entidade.getSenha());
 
         return recuperado;
     }

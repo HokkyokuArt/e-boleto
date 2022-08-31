@@ -7,8 +7,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import java.io.Serializable;
 
 @Entity
@@ -20,11 +18,11 @@ public class Fornecedor implements CrudDomain<Long>, Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name="razao_social")
+    @Column(name = "razao_social")
     private String razaosocial;
     private String cnpj;
     private String ie;
-    @Column(name="nome_fantasia")
+    @Column(name = "nome_fantasia")
     private String nomefantasia;
     private String logradouro;
     private String numero;
@@ -35,10 +33,8 @@ public class Fornecedor implements CrudDomain<Long>, Serializable {
     private String estado;
     private String email;
     private String telefone;
-    @Column(name="prazo_pagamento")
+    @Column(name = "prazo_pagamento")
     private Long prazopagamento;
-    @JsonIgnore
     private String senha;
-
 
 }
