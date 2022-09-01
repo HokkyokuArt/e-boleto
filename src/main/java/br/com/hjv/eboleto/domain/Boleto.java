@@ -32,8 +32,8 @@ public class Boleto implements CrudDomain<Long>, Serializable {
     @ManyToOne
     @JoinColumn(name="fornecedor_id", referencedColumnName = "id")
     private Fornecedor fornecedor;
-    @JoinColumn(name="cliente_id",referencedColumnName = "id")
     @ManyToOne
+    @JoinColumn(name="cliente_id",referencedColumnName = "id")
     private Cliente cliente;
 
 }

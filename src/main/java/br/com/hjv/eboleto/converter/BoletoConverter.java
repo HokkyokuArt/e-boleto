@@ -3,8 +3,8 @@ package br.com.hjv.eboleto.converter;
 import br.com.hjv.eboleto.core.CrudConverter;
 import br.com.hjv.eboleto.domain.Boleto;
 import br.com.hjv.eboleto.dto.BoletoDTO;
-import br.com.hjv.eboleto.repository.ClienteRepository;
-import br.com.hjv.eboleto.repository.FornecedorRepository;
+// import br.com.hjv.eboleto.repository.ClienteRepository;
+// import br.com.hjv.eboleto.repository.FornecedorRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -14,8 +14,8 @@ public class BoletoConverter implements CrudConverter<Boleto, BoletoDTO> {
 
     private final ClienteConverter clienteConverter;
     private  final FornecedorConverter fornecedorConverter;
-    private final ClienteRepository clienteRepository;
-    private final FornecedorRepository fornecedorRepository;
+    // private final ClienteRepository clienteRepository;
+    // private final FornecedorRepository fornecedorRepository;
     @Override
     public BoletoDTO entidadeParaDto(Boleto entidade) {
         var dto = new BoletoDTO();
@@ -47,8 +47,8 @@ public class BoletoConverter implements CrudConverter<Boleto, BoletoDTO> {
         boleto.setSituacao(dto.getSituacao());
         boleto.setAlterado(dto.getAlterado());
         boleto.setObs(dto.getObs());
-        boleto.setCliente(clienteRepository.findById(dto.getClienteId()).orElse(null));
-        boleto.setFornecedor(fornecedorRepository.findById(dto.getFornecedorId()).orElse(null));
+        // boleto.setCliente(clienteRepository.findById(dto.getClienteId()).orElse(null));
+        // boleto.setFornecedor(fornecedorRepository.findById(dto.getFornecedorId()).orElse(null));
 
         return boleto;
     }

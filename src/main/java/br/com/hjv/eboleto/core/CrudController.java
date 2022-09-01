@@ -22,16 +22,6 @@ public abstract class CrudController<T extends CrudDomain<ID>, D, ID> {
         return ResponseEntity.ok(listaPaginada);
     }
 
-    // @GetMapping
-    // public ResponseEntity<List<D>> listar() {
-
-    //     var listaDto = service.listar().stream().map(converter::entidadeParaDto)
-    //             .collect(Collectors.toList());
-
-    //     return ResponseEntity.ok(listaDto);
-
-    // }
-
     @GetMapping("/{id}")
     public ResponseEntity<D> especifico(@PathVariable("id") ID id) {
         var entidade = service.porId(id);
@@ -42,10 +32,8 @@ public abstract class CrudController<T extends CrudDomain<ID>, D, ID> {
     }
 
     @PostMapping
-    public ResponseEntity<D> criar(@RequestBody T dto) {
-        // var entidade = converter.dtoParaEntidade(dto);
-        // var salvo = service.criar(entidade);
-        var salvo = service.criar(dto);
+    public ResponseEntity<D> criar(@RequestBody T entidade) {
+        var salvo = service.criar(entidade);
         ServletUriComponentsBuilder builder = ServletUriComponentsBuilder.fromCurrentRequest();
         var uri = builder.path("/{id}").buildAndExpand(salvo.getId()).toUri();
         return ResponseEntity.created(uri).body(converter.entidadeParaDto(salvo));

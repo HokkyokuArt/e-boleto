@@ -3,7 +3,6 @@ package br.com.hjv.eboleto.core;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-
 import java.util.List;
 import java.util.Objects;
 
@@ -44,4 +43,8 @@ public abstract class CrudService<T,ID> {
     }
 
     protected abstract T editarEntidade(T recuperado, T entidade);
+
+    public String toString(){
+        return "Não encontrado";
+    }
 }
