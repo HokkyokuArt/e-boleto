@@ -1,14 +1,9 @@
 package br.com.hjv.eboleto.domain;
-
 import br.com.hjv.eboleto.core.CrudDomain;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import javax.persistence.*;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import java.io.Serializable;
 
 @Entity
@@ -36,7 +31,6 @@ public class Cliente implements CrudDomain<Long> , Serializable {
         private String email;
         private String telefone;
         private String contato;
-        @JsonIgnore
         private String senha;
 
 }

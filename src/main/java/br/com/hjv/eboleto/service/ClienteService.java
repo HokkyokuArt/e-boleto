@@ -22,7 +22,7 @@ public class ClienteService extends CrudService<Cliente,Long> {
         recuperado.setEmail(entidade.getEmail());
         recuperado.setTelefone(entidade.getTelefone());
         recuperado.setContato(entidade.getContato());
-        recuperado.setSenha(entidade.getSenha());
+        // recuperado.setSenha(entidade.getSenha());
 
         return recuperado;
     }    
