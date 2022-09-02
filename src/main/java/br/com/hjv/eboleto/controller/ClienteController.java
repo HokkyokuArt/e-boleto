@@ -6,10 +6,8 @@ import br.com.hjv.eboleto.dto.BoletoResumoDTO;
 import br.com.hjv.eboleto.dto.ClienteDTO;
 import br.com.hjv.eboleto.repository.BoletoRepository;
 import br.com.hjv.eboleto.service.BoletoService;
-
 import java.util.List;
 import java.util.Objects;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

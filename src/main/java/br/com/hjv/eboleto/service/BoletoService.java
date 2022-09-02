@@ -4,7 +4,6 @@ import br.com.hjv.eboleto.core.CrudService;
 import br.com.hjv.eboleto.domain.Boleto;
 import br.com.hjv.eboleto.dto.BoletoResumoDTO;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
@@ -16,11 +15,6 @@ import org.springframework.stereotype.Service;
 public class BoletoService extends CrudService<Boleto, Long> {
     @Autowired
     protected FornecedorService fornecedorService;
-    // protected Fornecedor fornecedor;
-    
-    // public Fornecedor getFornecedor() {
-    //     return (Fornecedor) this.fornecedor;
-    // }
 
     @Override
     protected Boleto editarEntidade(Boleto recuperado, Boleto entidade) {
@@ -29,9 +23,8 @@ public class BoletoService extends CrudService<Boleto, Long> {
         // recuperado.setId(entidade.getId());
         // recuperado.setDataemissao(entidade.getDataemissao());
         // recuperado.setDatavencimento(entidade.getDatavencimento());
-            //  recuperado.setNovovencimento(entidade.getNovovencimento());
-            //  recuperado.setNovovencimento(LocalDate.now().plusDays(fornecedorService.recuperarPrazoPagamento(recuperado.getFornecedor().getId())));
-             recuperado.setNovovencimento(recuperado.getDatavencimento().plusDays(fornecedorService.recuperarPrazoPagamento(recuperado.getFornecedor().getId())));
+        // recuperado.setNovovencimento(entidade.getNovovencimento());
+        recuperado.setNovovencimento(recuperado.getDatavencimento().plusDays(fornecedorService.recuperarPrazoPagamento(recuperado.getFornecedor().getId())));
         // recuperado.setDatapagamento(entidade.getDatapagamento());
         // recuperado.setValor(entidade.getValor());
         // recuperado.setSituacao(entidade.getSituacao());

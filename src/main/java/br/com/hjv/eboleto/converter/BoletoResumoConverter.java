@@ -10,10 +10,6 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 public class BoletoResumoConverter implements CrudConverter<Boleto, BoletoResumoDTO> {
 
-    // private final ClienteConverter clienteConverter;
-    // private  final FornecedorConverter fornecedorConverter;
-    // private final ClienteRepository clienteRepository;
-    // private final FornecedorRepository fornecedorRepository;
     @Override
     public BoletoResumoDTO entidadeParaDto(Boleto entidade) {
         var dto = new BoletoResumoDTO();

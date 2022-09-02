@@ -14,8 +14,6 @@ public class BoletoConverter implements CrudConverter<Boleto, BoletoDTO> {
 
     private final ClienteConverter clienteConverter;
     private  final FornecedorConverter fornecedorConverter;
-    // private final ClienteRepository clienteRepository;
-    // private final FornecedorRepository fornecedorRepository;
     @Override
     public BoletoDTO entidadeParaDto(Boleto entidade) {
         var dto = new BoletoDTO();

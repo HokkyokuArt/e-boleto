@@ -10,7 +10,6 @@ public class ClienteConverter implements CrudConverter<Cliente, ClienteDTO> {
     @Override
     public ClienteDTO entidadeParaDto(Cliente entidade) {
 
-        //return new ClienteDto(entidade.getId(), entidade.getRazaoSocialNome());
         var dto = new ClienteDTO();
 
         dto.setId(entidade.getId());

@@ -22,8 +22,6 @@ public class BoletoDTO implements Serializable {
     private String situacao;
     private Boolean alterado;
     private String obs;
-    // private Long clienteId;
-    // private Long fornecedorId;
     private ClienteDTO cliente;
     private FornecedorDTO fornecedor;
 }
