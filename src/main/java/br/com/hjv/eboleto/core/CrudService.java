@@ -44,7 +44,4 @@ public abstract class CrudService<T,ID> {
 
     protected abstract T editarEntidade(T recuperado, T entidade);
 
-    public String toString(){
-        return "Não encontrado";
-    }
 }
