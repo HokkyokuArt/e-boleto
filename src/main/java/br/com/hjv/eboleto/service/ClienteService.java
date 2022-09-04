@@ -1,14 +1,19 @@
 package br.com.hjv.eboleto.service;
-
 import br.com.hjv.eboleto.core.CrudService;
 import br.com.hjv.eboleto.domain.Cliente;
+import br.com.hjv.eboleto.repository.ClienteRepository;
+import java.util.Objects;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ClienteService extends CrudService<Cliente,Long> {
+public class ClienteService extends CrudService<Cliente, Long> {
+
+    @Autowired
+    protected ClienteRepository clienteRepository;
 
     @Override
-    protected Cliente editarEntidade(Cliente recuperado, Cliente entidade){
+    protected Cliente editarEntidade(Cliente recuperado, Cliente entidade) {
         recuperado.setRazaosocialnome(entidade.getRazaosocialnome());
         recuperado.setCnpjcpf(entidade.getCnpjcpf());
         recuperado.setIerg(entidade.getIerg());
@@ -25,5 +30,15 @@ public class ClienteService extends CrudService<Cliente,Long> {
         // recuperado.setSenha(entidade.getSenha());
 
         return recuperado;
-    }    
+    }
+
+    public Cliente autenticacaoUsuario(String email, String senha){
+        var recuperado = clienteRepository.autenticacaoUser(email, senha);
+        if(Objects.isNull(recuperado)){
+           return null;
+        } else {
+            return recuperado;
+        }
+    };
+
 }

@@ -6,12 +6,15 @@ import br.com.hjv.eboleto.dto.BoletoResumoDTO;
 import br.com.hjv.eboleto.dto.ClienteDTO;
 import br.com.hjv.eboleto.repository.BoletoRepository;
 import br.com.hjv.eboleto.service.BoletoService;
+import br.com.hjv.eboleto.service.ClienteService;
+import lombok.var;
 import java.util.List;
 import java.util.Objects;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/cliente")
 public class ClienteController extends CrudController<Cliente, ClienteDTO, Long> {
@@ -21,6 +24,8 @@ public class ClienteController extends CrudController<Cliente, ClienteDTO, Long>
     protected BoletoService boletoService;
     @Autowired
     protected BoletoResumoConverter boletoResumoConverter;
+    @Autowired 
+    protected ClienteService clienteService;
 
     @GetMapping("/{id}/meus-boletos")
     public ResponseEntity<List<BoletoResumoDTO>> constultaBoletosPorCliente(@PathVariable("id") Cliente id) {
@@ -41,5 +46,11 @@ public class ClienteController extends CrudController<Cliente, ClienteDTO, Long>
             return ResponseEntity.noContent().build();
         }
         return ResponseEntity.ok(boletoResumoConverter.entidadeParaDto(boletoDataAlterada));
+    }
+
+    @GetMapping("/login/email={email}&senha={senha}")
+    public Cliente autenticacaoUsuario(@PathVariable("email") String email, @PathVariable("senha") String senha) {        
+        var recuperado = clienteService.autenticacaoUsuario(email, senha);
+        return recuperado;       
     }
 }
