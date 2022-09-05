@@ -1,89 +1,81 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
-                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
                    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.3.xsd">
 
     <changeSet id="1" author="HJV">
         <preConditions onFail="MARK_RAN" onFailMessage="Já existe a tabela CLIENTE">
             <not>
-                <tableExists tableName="cliente"/>
+                <tableExists tableName="cliente" />
             </not>
         </preConditions>
         <createTable tableName="cliente">
             <column name="id" type="int">
-                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_cliente"/>
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_cliente" />
             </column>
             <column name="cnpj_cpf" type="VARCHAR(18)">
-                <constraints nullable="false"/>
+                <constraints nullable="false" />
             </column>
-            <column name="ie_rg" type="VARCHAR(14)"/>
+            <column name="ie_rg" type="VARCHAR(14)" />
             <column name="razao_social_nome" type="VARCHAR(60)">
-                <constraints nullable="false"/>
+                <constraints nullable="false" />
             </column>
-            <column name="logradouro" type="VARCHAR(60)"/>
-            <column name="numero" type="VARCHAR(20)"/>
-            <column name="bairro" type="VARCHAR(60)"/>
-            <column name="complemento" type="VARCHAR(60)"/>
-            <column name="cep" type="VARCHAR(10))"/>
-            <column name="cidade" type="VARCHAR(60))"/>
-            <column name="estado" type="VARCHAR(30))"/>
-            <column name="email" type="VARCHAR(60))"/>
-            <column name="telefone" type="VARCHAR(30)"/>
-            <column name="contato" type="VARCHAR(60)"/>
+            <column name="logradouro" type="VARCHAR(60)" />
+            <column name="numero" type="VARCHAR(20)" />
+            <column name="bairro" type="VARCHAR(60)" />
+            <column name="complemento" type="VARCHAR(60)" />
+            <column name="cep" type="VARCHAR(10))" />
+            <column name="cidade" type="VARCHAR(60))" />
+            <column name="estado" type="VARCHAR(30))" />
+            <column name="email" type="VARCHAR(60))" >
+                <constraints nullable="false" />
+            </column>
+            <column name="telefone" type="VARCHAR(30)" />
+            <column name="contato" type="VARCHAR(60)" />
             <column name="senha" type="VARCHAR(30))">
-                <constraints nullable="false"/>
+                <constraints nullable="false" />
             </column>
 
         </createTable>
-        <addAutoIncrement tableName="cliente"
-                          columnName="id"
-                          columnDataType="int"
-                          incrementBy="1"
-                          startWith="1"/>
+        <addAutoIncrement tableName="cliente" columnName="id" columnDataType="int" incrementBy="1" startWith="1" />
     </changeSet>
 
     <changeSet id="2" author="HJV">
         <preConditions onFail="MARK_RAN" onFailMessage="Já existe a tabela FORNECEDOR">
             <not>
-                <tableExists tableName="fornecedor"/>
+                <tableExists tableName="fornecedor" />
             </not>
         </preConditions>
         <createTable tableName="fornecedor">
             <column name="id" type="int">
-                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_fornecedor"/>
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_fornecedor" />
             </column>
             <column name="razao_social" type="VARCHAR(60)">
-                <constraints nullable="false"/>
+                <constraints nullable="false" />
             </column>
             <column name="cnpj" type="VARCHAR(18)">
-                <constraints nullable="false"/>
+                <constraints nullable="false" />
             </column>
-            <column name="ie" type="VARCHAR(14)"/>
-            <column name="nome_fantasia" type="VARCHAR(60)"/>
-            <column name="logradouro" type="VARCHAR(60)"/>
-            <column name="numero" type="VARCHAR(20))"/>
-            <column name="bairro" type="VARCHAR(60)"/>
-            <column name="complemento" type="VARCHAR(60)"/>
-            <column name="cep" type="VARCHAR(10))"/>
-            <column name="cidade" type="VARCHAR(60))"/>
-            <column name="estado" type="VARCHAR(30))"/>
-            <column name="email" type="VARCHAR(60))"/>
-            <column name="telefone" type="VARCHAR(30)"/>
+            <column name="ie" type="VARCHAR(14)" />
+            <column name="nome_fantasia" type="VARCHAR(60)" />
+            <column name="logradouro" type="VARCHAR(60)" />
+            <column name="numero" type="VARCHAR(20))" />
+            <column name="bairro" type="VARCHAR(60)" />
+            <column name="complemento" type="VARCHAR(60)" />
+            <column name="cep" type="VARCHAR(10))" />
+            <column name="cidade" type="VARCHAR(60))" />
+            <column name="estado" type="VARCHAR(30))" />
+            <column name="email" type="VARCHAR(60))" />
+            <column name="telefone" type="VARCHAR(30)" />
             <column name="prazo_pagamento" type="int" defaultValue="1">
-                <constraints nullable="false"/>
+                <constraints nullable="false" />
             </column>
             <column name="senha" type="VARCHAR(30))">
-                <constraints nullable="false"/>
+                <constraints nullable="false" />
             </column>
 
         </createTable>
 
-        <addAutoIncrement tableName="fornecedor"
-                          columnName="id"
-                          columnDataType="int"
-                          incrementBy="1"
-                          startWith="1"/>
+        <addAutoIncrement tableName="fornecedor" columnName="id" columnDataType="int" incrementBy="1" startWith="1" />
     </changeSet>
 
 
