@@ -4,7 +4,6 @@ import br.com.hjv.eboleto.domain.Boleto;
 import br.com.hjv.eboleto.domain.Cliente;
 import br.com.hjv.eboleto.dto.BoletoDTO;
 import br.com.hjv.eboleto.repository.BoletoRepository;
-import lombok.var;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
