@@ -7,7 +7,6 @@ import br.com.hjv.eboleto.dto.ClienteDTO;
 import br.com.hjv.eboleto.repository.BoletoRepository;
 import br.com.hjv.eboleto.service.BoletoService;
 import br.com.hjv.eboleto.service.ClienteService;
-import lombok.var;
 import java.util.List;
 import java.util.Objects;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +39,7 @@ public class ClienteController extends CrudController<Cliente, ClienteDTO, Long>
     }
 
     @PutMapping("/{id}/meus-boletos/abertos/alterar-data={idBoleto}")
-    public ResponseEntity<BoletoResumoDTO> editarteste(@PathVariable("idBoleto") Long id) {
+    public ResponseEntity<BoletoResumoDTO> editarDataVencimento(@PathVariable("idBoleto") Long id) {
         var boletoDataAlterada = boletoService.editarDataVencimento(id);
         if (Objects.isNull(boletoDataAlterada)) {
             return ResponseEntity.noContent().build();
@@ -49,8 +48,12 @@ public class ClienteController extends CrudController<Cliente, ClienteDTO, Long>
     }
 
     @GetMapping("/login/email={email}&senha={senha}")
-    public Cliente autenticacaoUsuario(@PathVariable("email") String email, @PathVariable("senha") String senha) {        
+    public ResponseEntity<Cliente> autenticacaoUsuario(@PathVariable("email") String email, @PathVariable("senha") String senha) {        
         var recuperado = clienteService.autenticacaoUsuario(email, senha);
-        return recuperado;       
+        if (Objects.isNull(recuperado)) {
+            return ResponseEntity.noContent().build();
+        }
+
+        return ResponseEntity.ok(recuperado);       
     }
 }
