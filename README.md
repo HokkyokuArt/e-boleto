@@ -156,40 +156,11 @@ http://localhost:8080/boleto/
     "dataemissao": "2022-08-30",
     "datavencimento": "2022-09-30",
     "valor": 100.0,
+    "situacao": "Aberto",
+    "alterado": false,
     "obs": "Observação",
-    "cliente": {
-        "id": 1,
-        "razaosocialnome": "Razão social",
-        "cnpjcpf": "1234567890",
-        "ierg": "1234567890",
-        "logradouro": "Rua Logradouro",
-        "numero": "123A",
-        "bairro": "Bairro",
-        "complemento": "Complemento 123",
-        "cep": "123456-000",
-        "cidade": "Cidade",
-        "estado": "AA",
-        "email": "email@email.com",
-        "telefone": "(99)99999-9999",
-        "contato": "Contato"
-    },
-    "fornecedor": {
-        "id": 1,
-        "razaosocial": "Razão social",
-        "cnpj": "1234567890",
-        "ie": "1234567890",
-        "nomefantasia": "Nome fantasia",
-        "logradouro": "Rua Logradouro",
-        "numero": "123A",
-        "bairro": "Bairro",
-        "complemento": "Complemento 123",
-        "cep": "123456-000",
-        "cidade": "Cidade",
-        "estado": "AA",
-        "email": "email@email.com",
-        "telefone": "(99)99999-9999",
-        "prazopagamento": 5
-    }
+    "cliente": {"id": 1},
+    "fornecedor": {"id": 1}
 }
 
 (DELETE) Excluir boleto
